@@ -883,3 +883,9 @@ elseif(MSVC)
     target_compile_options(3rdparty_mkl INTERFACE "/DMKL_ILP64")
 endif()
 list(APPEND Open3D_3RDPARTY_PRIVATE_TARGETS "${MKL_TARGET}")
+
+# cuSOLVER and cuBLAS
+if(BUILD_CUDA_MODULE)
+    list(APPEND Open3D_3RDPARTY_PRIVATE_TARGETS ${CUDA_cusolver_LIBRARY})
+    list(APPEND Open3D_3RDPARTY_PRIVATE_TARGETS ${CUDA_CUBLAS_LIBRARIES})
+endif()
